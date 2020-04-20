@@ -2,6 +2,8 @@
 
 set -ex
 
+sudo chmod +w /opt
+
 git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /opt/kaldi
 
 pushd /opt/kaldi/tools
@@ -12,3 +14,5 @@ popd
 pushd /opt/kaldi/src
 
 ./configure --static
+
+popd
