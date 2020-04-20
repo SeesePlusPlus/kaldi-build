@@ -16,8 +16,8 @@ jobs:
           path: /opt/kaldi
           key: 5968b4c-setup
 
-      - run: sudo ./linux/setup-dependencies.sh
+      - run: sudo ./unix/setup-linux.sh
       - name: Setup Kaldi
         if: steps.cache-setup.outputs.cache-hit != 'true'
-        run: sudo ./linux/setup-kaldi.sh 5968b4c
-      - run: sudo ./linux/build.sh
+        run: sudo ./unix/setup-kaldi.sh 5968b4c
+      - run: sudo ./unix/build.sh
