@@ -7,8 +7,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - run: ./linux/setup-dependencies.sh
-      - run: ./linux/setup-kaldi.sh
-      - run: ./linux/build.sh
+      - name: Cache Setup
+        id: cache-setup
+        uses: actions/cache@v1
+        with:
+          path: /opt/kaldi
+          key: 5968b4c-setup
+
+      - run: sudo ./linux/setup-dependencies.sh
+      - name: Setup Kaldi
+        if: steps.cache-setup.outputs.cache-hit != 'true'
+        run: sudo ./linux/setup-kaldi.sh 5968b4c
+      - run: sudo ./linux/build.sh

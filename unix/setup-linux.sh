@@ -2,9 +2,9 @@
 
 set -ex
 
-sudo apt-get update
+apt-get update
 
-sudo apt-get install -y --no-install-recommends \
+apt-get install -y --no-install-recommends \
   g++ \
   make \
   automake \
@@ -25,7 +25,7 @@ sudo apt-get install -y --no-install-recommends \
   ffmpeg \
   vim
 
-sudo rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/apt/lists/*
 
-sudo unlink /usr/bin/python
-sudo ln -s /usr/bin/python2.7 /usr/bin/python
+unlink /usr/bin/python
+ln -s /usr/bin/python2.7 /usr/bin/python
