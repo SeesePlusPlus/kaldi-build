@@ -27,4 +27,5 @@ sudo apt-get install -y --no-install-recommends \
 
 sudo rm -rf /var/lib/apt/lists/*
 
+sudo unlink /usr/bin/python
 sudo ln -s /usr/bin/python2.7 /usr/bin/python
