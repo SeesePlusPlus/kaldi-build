@@ -3,18 +3,12 @@ name: Build Kaldi
 on: push
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
+  build-linux:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
-      - run: echo hello > artifact.txt
 
-      - uses: actions/upload-artifact@v1
-        with:
-          name: test-artifact
-          path: artifact.txt
+      - run: ./linux/setup-dependencies.sh
+      - run: ./linux/setup-kaldi.sh
+      - run: ./linux/build.sh
